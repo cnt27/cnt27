@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="xumingyang&#39;s Blog">
 <meta property="og:description" content="题目 Description有一个长度为$n$的排列，每次可以选择一个区间，把区间所有数向左或向右移动一格（像环一样，多出来那个数回到最左或最右的位置），向左和向右的代价分别为$A$和$B$，求排好序的最小代价">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-29T07:20:02.981Z">
+<meta property="og:updated_time" content="2019-03-29T10:25:17.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AtCoder Grand Contest 032D - Rotation Sort">
 <meta name="twitter:description" content="题目 Description有一个长度为$n$的排列，每次可以选择一个区间，把区间所有数向左或向右移动一格（像环一样，多出来那个数回到最左或最右的位置），向左和向右的代价分别为$A$和$B$，求排好序的最小代价">
@@ -370,7 +370,7 @@
                 
               
 
-              <time title="创建时间：2019-03-29 14:49:13 / 修改时间：15:20:02" itemprop="dateCreated datePublished" datetime="2019-03-29T14:49:13+08:00">2019-03-29</time>
+              <time title="创建时间：2019-03-29 14:49:13 / 修改时间：18:25:17" itemprop="dateCreated datePublished" datetime="2019-03-29T14:49:13+08:00">2019-03-29</time>
             
 
             
@@ -440,6 +440,7 @@
 <p>$f[i]=min \lbrace f[j]+(j+1…i-1中大于a[i]的数左转，小于a[i]的数右转的代价总和) \rbrace$</p>
 <p>因为最后不知道以哪个数为基准最好，为了便于统计，令$a[n+1]=n+1$，最后输出$f[n+1]$即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">5002</span>;</span><br><span class="line"><span class="keyword">int</span> n,A,B,a[N],i,j;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> f[N],tot;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;n,&amp;A,&amp;B);</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">	a[n+<span class="number">1</span>]=n+<span class="number">1</span>,n++;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">63</span>,<span class="keyword">sizeof</span>(f));</span><br><span class="line">	f[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		tot=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (j=i<span class="number">-1</span>;~j;j--)</span><br><span class="line">			<span class="keyword">if</span> (a[j]&lt;a[i]) f[i]=min(f[i],f[j]+tot),tot+=B;</span><br><span class="line">			<span class="keyword">else</span> tot+=A;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld"</span>,f[n]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可能有人会担心$A$很小，$B$很大，然后出现2 3 4 1这种情况，应该向左三次而不是向右一次，事实上，只要改变一下基准位置，一切就迎刃而解，而这些都已经在程序里有了，所以不用担心</p>
 
       
     </div>
@@ -487,6 +488,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/4/" rel="prev" title="hdu5287Fast wyh2000 Transform">
+                hdu5287Fast wyh2000 Transform <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -557,7 +562,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -578,7 +583,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -601,7 +608,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
